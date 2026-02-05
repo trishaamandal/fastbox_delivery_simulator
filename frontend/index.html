@@ -47,10 +47,8 @@
         fetch("result.json")
             .then(response => response.json())
             .then(data => {
-                // Best agent
                 document.getElementById("bestAgent").innerText = data.best_agent;
 
-                // Agent distances
                 const agentBody = document.querySelector("#agentTable tbody");
                 for (const agent in data.agent_distances) {
                     const row = `<tr>
@@ -59,8 +57,6 @@
                     </tr>`;
                     agentBody.innerHTML += row;
                 }
-
-                // Package assignments
                 const packageBody = document.querySelector("#packageTable tbody");
                 data.packages.forEach(pkg => {
                     const row = `<tr>

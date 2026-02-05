@@ -13,10 +13,8 @@ class DeliverySimulator:
         self.agents = agents
         self.packages = packages
 
-        # Track total distance traveled by each agent
+        # total distance traveled by each agent
         self.agent_distances = {agent_id: 0.0 for agent_id in agents}
-
-        # Track which agent delivered which package
         self.package_assignments = []
 
     def find_nearest_agent(self, warehouse_location: Tuple[float, float]) -> str:
@@ -46,10 +44,8 @@ class DeliverySimulator:
 
             warehouse_location = self.warehouses[warehouse_id]
 
-            # Step 1: find nearest agent to warehouse
             agent_id = self.find_nearest_agent(warehouse_location)
 
-            # Step 2: calculate distances
             agent_start = self.agents[agent_id]
 
             distance_to_warehouse = calculate_distance(agent_start, warehouse_location)
@@ -59,10 +55,8 @@ class DeliverySimulator:
 
             total_distance = distance_to_warehouse + distance_to_destination
 
-            # Step 3: update agent distance
             self.agent_distances[agent_id] += total_distance
 
-            # Step 4: store assignment result
             self.package_assignments.append(
                 {
                     "package_id": package_id,
@@ -71,7 +65,6 @@ class DeliverySimulator:
                 }
             )
 
-        # Step 5: find most efficient agent
         best_agent = min(self.agent_distances, key=self.agent_distances.get)
 
         return {

@@ -4,30 +4,25 @@ from simulator import DeliverySimulator
 
 
 def main():
-    # Project paths
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     DATA_DIR = os.path.join(BASE_DIR, "backend", "data")
     OUTPUT_DIR = os.path.join(BASE_DIR, "output")
 
-    # Select test case
     input_file = "test_case_1.json"
     input_path = os.path.join(DATA_DIR, input_file)
 
-    # Load JSON
     data = load_json(input_path)
 
-    # ✅ Correct extraction for YOUR JSON
     warehouses = {wid: tuple(coords) for wid, coords in data["warehouses"].items()}
 
     agents = {aid: tuple(coords) for aid, coords in data["agents"].items()}
 
     packages = data["packages"]
 
-    # Run simulation
+    # Ruun
     simulator = DeliverySimulator(warehouses, agents, packages)
     result = simulator.simulate()
 
-    # Save output
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     output_path = os.path.join(OUTPUT_DIR, "result.json")
     save_json(output_path, result)
