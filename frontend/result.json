@@ -1,0 +1,71 @@
+{
+    "packages": [
+        {
+            "package_id": "P1",
+            "assigned_agent": "A3",
+            "distance": 11.22
+        },
+        {
+            "package_id": "P2",
+            "assigned_agent": "A1",
+            "distance": 19.25
+        },
+        {
+            "package_id": "P3",
+            "assigned_agent": "A3",
+            "distance": 17.01
+        },
+        {
+            "package_id": "P4",
+            "assigned_agent": "A1",
+            "distance": 26.22
+        },
+        {
+            "package_id": "P5",
+            "assigned_agent": "A3",
+            "distance": 18.64
+        },
+        {
+            "package_id": "P6",
+            "assigned_agent": "A1",
+            "distance": 9.44
+        },
+        {
+            "package_id": "P7",
+            "assigned_agent": "A3",
+            "distance": 16.6
+        },
+        {
+            "package_id": "P8",
+            "assigned_agent": "A3",
+            "distance": 28.64
+        },
+        {
+            "package_id": "P9",
+            "assigned_agent": "A2",
+            "distance": 31.36
+        },
+        {
+            "package_id": "P10",
+            "assigned_agent": "A1",
+            "distance": 21.48
+        },
+        {
+            "package_id": "P11",
+            "assigned_agent": "A3",
+            "distance": 18.04
+        },
+        {
+            "package_id": "P12",
+            "assigned_agent": "A3",
+            "distance": 27.75
+        }
+    ],
+    "agent_distances": {
+        "A1": 76.39,
+        "A2": 31.36,
+        "A3": 137.9,
+        "A4": 0.0
+    },
+    "best_agent": "A4"
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FastBox Delivery Simulation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🚚 FastBox Delivery Simulation</h1>
+
+    <section id="best-agent">
+        <h2>Best Agent</h2>
+        <p id="bestAgent">Loading...</p>
+    </section>
+
+    <section>
+        <h2>Agent Distances</h2>
+        <table id="agentTable">
+            <thead>
+                <tr>
+                    <th>Agent ID</th>
+                    <th>Total Distance</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Package Assignments</h2>
+        <table id="packageTable">
+            <thead>
+                <tr>
+                    <th>Package ID</th>
+                    <th>Assigned Agent</th>
+                    <th>Distance</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <script>
+        fetch("result.json")
+            .then(response => response.json())
+            .then(data => {
+                // Best agent
+                document.getElementById("bestAgent").innerText = data.best_agent;
+
+                // Agent distances
+                const agentBody = document.querySelector("#agentTable tbody");
+                for (const agent in data.agent_distances) {
+                    const row = `<tr>
+                        <td>${agent}</td>
+                        <td>${data.agent_distances[agent]}</td>
+                    </tr>`;
+                    agentBody.innerHTML += row;
+                }
+
+                // Package assignments
+                const packageBody = document.querySelector("#packageTable tbody");
+                data.packages.forEach(pkg => {
+                    const row = `<tr>
+                        <td>${pkg.package_id}</td>
+                        <td>${pkg.assigned_agent}</td>
+                        <td>${pkg.distance}</td>
+                    </tr>`;
+                    packageBody.innerHTML += row;
+                });
+            })
+            .catch(error => {
+                alert("Failed to load result.json");
+                console.error(error);
+            });
+    </script>
+
+</body>
+
+</html>
